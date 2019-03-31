@@ -42,7 +42,7 @@ class Text_Wiki_Render_Xhtml_Embed extends Text_Wiki_Render {
     public function Text_Wiki_Render_Xhtml_Embed($obj) {
         parent::Text_Wiki_Render($obj);
 
-        $patternDir = WIKIDOT_ROOT . '/conf/wikiparser/embed';
+        $patternDir = '../../../../conf/wikiparser/embed';
         $files = glob($patternDir . '/*.php');
         foreach ($files as $f) {
             require $f;
