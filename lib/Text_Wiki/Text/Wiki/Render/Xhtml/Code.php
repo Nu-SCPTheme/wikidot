@@ -60,7 +60,7 @@ class Text_Wiki_Render_Xhtml_Code extends Text_Wiki_Render {
         $css_html = $this->formatConf(' class="%s"', 'css_html');
         $css_filename = $this->formatConf(' class="%s"', 'css_filename');
 
-        print "MOCK:xhtml-code type=$type attr=$attr text=$text"
+        print "MOCK:xhtml-code type=$type attr=$attr text=$text";
 
         // generic code example:
         // convert tabs to four spaces,
@@ -68,9 +68,9 @@ class Text_Wiki_Render_Xhtml_Code extends Text_Wiki_Render {
         $text = str_replace("\t", "    ", $text);
         $text = htmlspecialchars($text);
         $text = "<pre$css><code$css_code>$text</code></pre>";
-		
+
 		 $text = "<div class=\"code\">".$text."</div>";
-		
+
         if ($css_filename && isset($attr['filename'])) {
             $text = "<div$css_filename>" .
                 $attr['filename'] . '</div>' . $text;
