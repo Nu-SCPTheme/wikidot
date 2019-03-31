@@ -1,6 +1,4 @@
 <?php
-require_once(WIKIDOT_ROOT."/lib/Text_Highlighter/Text/Highlighter.php");
-ini_set('include_path',ini_get('include_path').':'.WIKIDOT_ROOT.'/lib/Text_Highlighter/');
 
 /**
  * Code rule end renderer for Xhtml
@@ -62,63 +60,14 @@ class Text_Wiki_Render_Xhtml_Code extends Text_Wiki_Render {
         $css_html = $this->formatConf(' class="%s"', 'css_html');
         $css_filename = $this->formatConf(' class="%s"', 'css_filename');
 
-		$text = trim($text);
-		
-        if ($type == 'php') {
-        	 	/*if (substr($text, 0, 5) != '<?php') {
-                // PHP code example:
-                // add the PHP tags
-                $text = "<?php\n" . $text . "\n?>"; // <?php
-          	}*/
-        	 	$highlighter = Text_Highlighter::factory('php');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'cpp') {
-            $highlighter = Text_Highlighter::factory('cpp');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'css') {
-            $highlighter = Text_Highlighter::factory('css');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'html' || $type == 'xhtml') {
-            $highlighter = Text_Highlighter::factory('html');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'diff') {
-            $highlighter = Text_Highlighter::factory('diff');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'dtd') {
-            $highlighter = Text_Highlighter::factory('dtd');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'java') {
-            $highlighter = Text_Highlighter::factory('java');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'javascript') {
-            $highlighter = Text_Highlighter::factory('javascript');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'sql') {
-            $highlighter = Text_Highlighter::factory('sql');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'perl') {
-            $highlighter = Text_Highlighter::factory('perl');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'python') {
-            $highlighter = Text_Highlighter::factory('python');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'ruby') {
-            $highlighter = Text_Highlighter::factory('ruby');
-            $text = $highlighter->highlight($text);
-        }elseif ($type == 'sql') {
-            $highlighter = Text_Highlighter::factory('sql');
-            $text = $highlighter->highlight($text);
-        }elseif($type=="xml"){
-       	 	$highlighter = Text_Highlighter::factory('xml');
-            $text = $highlighter->highlight($text);
-        } else {
-            // generic code example:
-            // convert tabs to four spaces,
-            // convert entities.
-            $text = str_replace("\t", "    ", $text);
-            $text = htmlspecialchars($text);
-            $text = "<pre$css><code$css_code>$text</code></pre>";
-        }
+        print "MOCK:xhtml-code type=$type attr=$attr text=$text"
+
+        // generic code example:
+        // convert tabs to four spaces,
+        // convert entities.
+        $text = str_replace("\t", "    ", $text);
+        $text = htmlspecialchars($text);
+        $text = "<pre$css><code$css_code>$text</code></pre>";
 		
 		 $text = "<div class=\"code\">".$text."</div>";
 		
